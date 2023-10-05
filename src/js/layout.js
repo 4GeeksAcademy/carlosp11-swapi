@@ -8,6 +8,7 @@ import { SwCard } from "./component/swcard.jsx";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { SwList } from "./views/swlist.jsx";
+import { SwDetail } from "./views/swdetail.jsx";
 
 //create your first component
 const Layout = () => {
@@ -24,6 +25,7 @@ const Layout = () => {
 						<Route path="/" element={<SwList />} />
 						<Route path="swcard" element={<SwCard />} />
 						<Route path="swlist" element={<SwList />} />
+						<Route path="swdetail" element={<SwDetail />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

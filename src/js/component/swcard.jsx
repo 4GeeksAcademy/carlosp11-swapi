@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 //import Card from 'react-bootstrap/Card';
 import Stormtrooper from "../../img/Stormtrooper.png";
@@ -27,8 +28,8 @@ export const SwCard = (props) => {
     <div className="container my-2">
       <div className="card " style={{ width: "15rem" }}>
         <div className="d-flex justify-content-center">
-          <img src = {imgName == 'Stormtrooper' ? Stormtrooper : imgName == 'Falcon' ? Falcon : Mustafar} 
-          className="card-img-top " alt="img" style={{ maxHeight: 'auto'}} 
+          <img src={imgName == 'Stormtrooper' ? Stormtrooper : imgName == 'Falcon' ? Falcon : Mustafar}
+            className="card-img-top " alt="img" style={{ maxHeight: 'auto' }}
           />
         </div>
         <div className="card-body">
@@ -38,11 +39,12 @@ export const SwCard = (props) => {
             <button type="button" className="btn btn-outline-warning me-2" onClick={() => { makeFav(props.name) }}>
               <FontAwesomeIcon icon={store.favorites.includes(props.name) ? faHeartCircleCheck : faHeart} />
             </button>
-            <Button variant="primary"> Learn more </Button>
+            <Link to="/swdetail">
+            <button type="button" className="btn btn-primary"> Learn more  </button>
+            </Link>
           </div>
         </div>
       </div>
-
     </div>
   )
 }
