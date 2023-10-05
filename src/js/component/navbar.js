@@ -34,18 +34,27 @@ export const Navbar = () => {
 							Favorites <span className="ps-1 bg-secondary border border-0 rounded"> {store.favorites.length} </span>
 						</button>
 						<ul className="dropdown-menu">
-							{store.favorites.map((item) => (
-								<div className="container">
-									<li className="d-flex justify-content-between" ><a className="dropdown-item" href="#">
-										<div>{store.favorites.length ? `${item}` : `hello`}  </div>
-										<div>
-											<button type="button" className="btn " onClick={() => { deleteItem(item) }} >
-												<FontAwesomeIcon icon={faTrash} />
-											</button>
+							<span className="ps-2 mx-5"> {!store.favorites.length ? "empty" : ""} </span>
+								{
+									store.favorites.map((item) => (
+										<div className="container">
+											<li className="" >
+												<a className="dropdown-item" href="#">
+													<div className="d-flex justify-content-between">
+														<span className="my-1"> {item}  </span>
+														<span>
+															<button type="button" className="btn " onClick={() => { deleteItem(item) }} >
+																<FontAwesomeIcon icon={faTrash} />
+															</button>
+														</span>
+													</div>
+												</a>
+
+											</li>
 										</div>
-									</a></li>
-								</div>
-							))}
+									))
+								} 
+							
 						</ul>
 					</div>
 

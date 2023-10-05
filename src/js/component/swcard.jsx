@@ -12,20 +12,15 @@ import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 export const SwCard = (props) => {
   const { store, actions } = useContext(Context)
   const [imgName, setImgName] = useState('Stormtrooper');
-  const [liked , setLiked] = useState(false);
   const doThis = () =>{
     console.log(imgName);
   }
-  const makeFav =(name) => {    
-    actions.setFavs(name);     
-    if (liked ) {
-      setLiked(false);
-      actions.deleteFav(name);
+  const makeFav =(name) => {
+    if (!store.favorites.includes(props.name)){
+      actions.setFavs(name);
     } else {
-      setLiked(true)
+      actions.deleteFav(name);
     }
-    console.log('despues el array es ' + store.favorites);
-    console.log('hola');
   }
 
   return (
@@ -41,7 +36,7 @@ export const SwCard = (props) => {
           </Card.Text>
           <div className="d-flex justify-content-center">
           <button type="button" class="btn btn-outline-warning me-2" onClick={()=> {makeFav(props.name)}}>  
-          <FontAwesomeIcon icon={liked ? faHeartCircleCheck : faHeart} />
+          <FontAwesomeIcon icon={store.favorites.includes(props.name) ? faHeartCircleCheck : faHeart} />
           </button>
             <Button variant="primary"> Learn more </Button>
           </div>
