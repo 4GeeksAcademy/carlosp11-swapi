@@ -27,12 +27,12 @@ export const Navbar = () => {
 					</Link>
 				</div>
 				<div className="mx-2">
-					<div className="dropdown">
-						<button className="btn btn-primary dropdown-toggle my-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<div className="btn-group">
+						<button className="btn btn-primary dropdown-toggle my-2" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
 							Favorites <span className="ps-1 bg-secondary border border-0 rounded"> {store.favorites.length} </span>
 						</button>
 						<ul className="dropdown-menu">
-							<span className="ps-2 mx-5"> {!store.favorites.length ? "empty" : ""} </span>
+							<span className="ps-1 mx-5"> {!store.favorites.length ? "(empty)" : ""} </span>
 							{store.favorites.map((item) => (
 								<div className="container">
 									<li className="" >

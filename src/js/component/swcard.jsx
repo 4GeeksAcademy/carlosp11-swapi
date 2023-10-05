@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 //import Card from 'react-bootstrap/Card';
 import Stormtrooper from "../../img/Stormtrooper.png";
 import Mustafar from "../../img/mustafar.jpeg";
@@ -10,18 +10,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
+
 export const SwCard = (props) => {
   const { store, actions } = useContext(Context)
   const [imgName, setImgName] = useState(props.imgType);
-  const doThis = () => {
-    console.log(imgName);
-  }
+  const navigate = useNavigate();
   const makeFav = (name) => {
     if (!store.favorites.includes(props.name)) {
       actions.setFavs(name);
     } else {
       actions.deleteFav(name);
     }
+  }
+
+  const handleDetails = () => {
+    let type = props.being;
+    let typeId = props.uid;
+    actions.getDetails(type, typeId);
+    console.log(store.details);
+    navigate("/swdetail");
   }
 
   return (
@@ -39,9 +46,9 @@ export const SwCard = (props) => {
             <button type="button" className="btn btn-outline-warning me-2" onClick={() => { makeFav(props.name) }}>
               <FontAwesomeIcon icon={store.favorites.includes(props.name) ? faHeartCircleCheck : faHeart} />
             </button>
-            <Link to="/swdetail">
-            <button type="button" className="btn btn-primary"> Learn more  </button>
-            </Link>
+
+            <button type="button" className="btn btn-outline-primary" onClick= {handleDetails} > Learn more </button>
+
           </div>
         </div>
       </div>

@@ -9,12 +9,12 @@ export const SwList = (props) => {
 
 
   return (
-    <div className="container">
-      <div className="container overflow-auto bg-light my-5">
+    <div className="container ">
+      <div className="container overflow-auto bg-light my-5" >
         <div className="d-flex justify-content-between">
           {store.peoples.map((people) =>
             <div className="">
-              <SwCard name={people.name} url={people.url} uid={people.uid} imgType={"Stormtrooper"} />
+              <SwCard name={people.name} url={people.url} uid={people.uid} being={'people'} imgType={"Stormtrooper"} />
             </div>
           )}
         </div>
@@ -23,7 +23,7 @@ export const SwList = (props) => {
         <div className="d-flex justify-content-between">
           {store.planets.map((planet) =>
             <div className="">
-              <SwCard name={planet.name} url={planet.url} uid={planet.uid} imgType={"Mustafar"} />
+              <SwCard name={planet.name} url={planet.url} uid={planet.uid} being={'planets'} imgType={"Mustafar"} />
             </div>
           )}
         </div>
@@ -32,7 +32,7 @@ export const SwList = (props) => {
         <div className="d-flex justify-content-between">
           {store.vehicles.map((vehicle) =>
             <div className="">
-              <SwCard name={vehicle.name} url={vehicle.url} uid={vehicle.uid} imgType={"Falcon"} />
+              <SwCard name={vehicle.name} url={vehicle.url} uid={vehicle.uid} being={'vehicles'} imgType={"Falcon"} />
             </div>
           )}
         </div>

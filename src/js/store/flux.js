@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			baseUrl: 'https://www.swapi.tech/api',
 			favorites: [],
 			peoples: [],
 			vehicles: [],
@@ -36,7 +37,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({"favorites": newFavs})
 			},				
 			getPeople: async () => {
-				const url = 'https://www.swapi.tech/api/people';
+				const storage = getStore();
+				const url = storage.baseUrl + '/people';
 				const options = {
 					method : 'GET'
 				}
@@ -53,7 +55,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			getPlanets: async () => {
-				const url = 'https://www.swapi.tech/api/planets';
+				const storage = getStore();
+				const url = storage.baseUrl + '/planets';
 				const options = {
 					method : 'GET'
 				}
@@ -67,7 +70,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			getVehicles: async () => {
-				const url = 'https://www.swapi.tech/api/vehicles';
+				const storage = getStore();
+				const url = storage.baseUrl + '/vehicles';
 				const options = {
 					method : 'GET'
 				}
@@ -80,24 +84,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log('Error: ', response.status, response.statusText)
 				}
 			},
-			getDetails: async (url) => {
+			getDetails: async (type, typeId) => {
+				const storage = getStore();
+				const url = storage.baseUrl + `/${type}/${typeId}`;
 				const options = {
 					method : 'GET'
 				}
 				const response = await fetch(url, options);
 				if (response.ok) {
 					const data = await response.json();
-					setStore({details: data	});
-	
+					const specifications = data.result.properties;
+					specifications.swelement = type;
+					setStore({details: specifications});
+
+					const elems = getStore();
+
+					console.log(elems.details);
 				} else {
 					console.log('Error: ', response.status, response.statusText)
 				}
-			},
-			setDetails: () => {
-				const storage = getStore();
-				setStore({"charGender": storage.details, 
-					"charHair": storage.details,
-					"charEyes": storage.details});
 			},
 			getColletions: async () => {
 				getActions().getPeople();
