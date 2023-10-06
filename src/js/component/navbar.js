@@ -22,8 +22,8 @@ export const Navbar = () => {
 	}
 
 	return (
-		<div className="row">
-			<div className="col bg-dark mb-3 d-flex justify-content-between">
+		<div className="fixed-top row ">
+			<div className="col bg-black d-flex justify-content-between">
 				<div className="ms-2">
 					<Link to="/">
 						<img src={SWlogo} alt="Starwars logo" style={{ width: '6rem' }} />

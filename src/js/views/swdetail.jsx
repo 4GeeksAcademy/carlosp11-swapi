@@ -10,7 +10,7 @@ export const SwDetail = (props) => {
 
   return (
 
-    <div className="container pb-5">
+    <div className="container pb-5 mt-5 pt-5">
       <div className="row d-flex justify-content-between mb-5">
         <div className=" col-5">
           <img src={store.details.swelement == 'people' ? Stormtrooper : store.details.swelement == 'vehicles' ? Falcon : Mustafar}
