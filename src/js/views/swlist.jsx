@@ -10,7 +10,8 @@ export const SwList = (props) => {
 
   return (
     <div className="container ">
-      <div className="container overflow-auto bg-light my-5" >
+      <div> <h2 className="text-danger fw-bold font-monospace"> Characters </h2> </div>      
+      <div className="container overflow-auto bg-light mb-5" >        
         <div className="d-flex justify-content-between">
           {store.peoples.map((people) =>
             <div className="">
@@ -19,7 +20,8 @@ export const SwList = (props) => {
           )}
         </div>
       </div>
-      <div className="container overflow-auto bg-light my-5">
+      <div> <h2 className="text-danger fw-bold font-monospace"> Planets </h2> </div>  
+      <div className="container overflow-auto bg-light mb-5">
         <div className="d-flex justify-content-between">
           {store.planets.map((planet) =>
             <div className="">
@@ -28,7 +30,8 @@ export const SwList = (props) => {
           )}
         </div>
       </div>
-      <div className="container overflow-auto bg-light">
+      <div> <h2 className="text-danger fw-bold font-monospace"> Vehicles </h2> </div>  
+      <div className="container overflow-auto bg-light mb-5">
         <div className="d-flex justify-content-between">
           {store.vehicles.map((vehicle) =>
             <div className="">

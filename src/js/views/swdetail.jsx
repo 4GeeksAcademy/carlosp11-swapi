@@ -11,15 +11,15 @@ export const SwDetail = (props) => {
   return (
 
     <div className="container pb-5">
-      <div className="row d-flex justify-content-between mb-4">
+      <div className="row d-flex justify-content-between mb-5">
         <div className=" col-5">
           <img src={store.details.swelement == 'people' ? Stormtrooper : store.details.swelement == 'vehicles' ? Falcon : Mustafar}
             className="card-img-top " alt="img" style={{ maxHeight: 'auto' }}
           />
         </div>
         <div className=" col-7">
-          <h1> {store.details.name} </h1>
-          <p> Our scout ships have reached Dantooine. They found the remains of a Rebel base,
+          <h1 className="text-center"> {store.details.name} </h1>
+          <p className="text-center"> Our scout ships have reached Dantooine. They found the remains of a Rebel base,
             but they estimate that it has been deserted for some time. They are now conducting
             an extensive search of the surrounding systems. She lied! She lied to us! I told
             you she would never consciously betray the Rebellion. Terminate her...immediately!

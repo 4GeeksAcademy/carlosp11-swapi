@@ -14,10 +14,15 @@ import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 export const SwCard = (props) => {
   const { store, actions } = useContext(Context)
   const [imgName, setImgName] = useState(props.imgType);
+  let likedFlag = false;
   const navigate = useNavigate();
+
   const makeFav = (name) => {
+    likedFlag = true;
+    console.log(likedFlag);
     if (!store.favorites.includes(props.name)) {
       actions.setFavs(name);
+      handleDetails();      
     } else {
       actions.deleteFav(name);
     }
@@ -27,8 +32,7 @@ export const SwCard = (props) => {
     let type = props.being;
     let typeId = props.uid;
     actions.getDetails(type, typeId);
-    console.log(store.details);
-    navigate("/swdetail");
+    flushDetails();
   }
 
   return (
@@ -42,12 +46,12 @@ export const SwCard = (props) => {
         <div className="card-body">
           <h5 className="card-title">{props.name}</h5>
           <p className="card-text">A long time ago in a galaxy far, far away.... </p>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-between">
             <button type="button" className="btn btn-outline-warning me-2" onClick={() => { makeFav(props.name) }}>
               <FontAwesomeIcon icon={store.favorites.includes(props.name) ? faHeartCircleCheck : faHeart} />
             </button>
 
-            <button type="button" className="btn btn-outline-primary" onClick= {handleDetails} > Learn more </button>
+            <button type="button" className="btn btn-outline-primary" onClick={handleDetails} > Learn more </button>
 
           </div>
         </div>

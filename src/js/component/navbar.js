@@ -9,14 +9,17 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 
 export const Navbar = () => {
+	const navigate = useNavigate();
 	const { store, actions } = useContext(Context)
-	const slot = 'Empty';
 	const deleteItem = (name) => {
 		console.log("el nombre del item a borrar es " + name);
 		actions.deleteFav(name);
 		console.log(store.favorites);
 	}
-
+	const goToDetails = (reference) => {
+		actions.changeReadLater(reference);
+		if (store.details != {}) navigate("/swdetail");
+	}
 
 	return (
 		<div className="row">
@@ -32,13 +35,17 @@ export const Navbar = () => {
 							Favorites <span className="ps-1 bg-secondary border border-0 rounded"> {store.favorites.length} </span>
 						</button>
 						<ul className="dropdown-menu">
-							<span className="ps-1 mx-5"> {!store.favorites.length ? "(empty)" : ""} </span>
+							<div className="ps-1 mx-5"> {!store.favorites.length ? "(empty)" : ""} </div>
 							{store.favorites.map((item) => (
 								<div className="container">
 									<li className="" >
 										<a className="dropdown-item" href="#">
 											<div className="d-flex justify-content-between">
-												<span className="my-1"> {item}  </span>
+												<span className="my-1">
+													<button type="button" className="btn"  onClick={()=> {goToDetails(item)}}>
+														{item}
+													</button>
+												</span>
 												<span>
 													<button type="button" className="btn " onClick={() => { deleteItem(item) }} >
 														<FontAwesomeIcon icon={faTrash} />
