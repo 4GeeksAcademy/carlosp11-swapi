@@ -32,7 +32,12 @@ export const SwCard = (props) => {
     let type = props.being;
     let typeId = props.uid;
     actions.getDetails(type, typeId);
-    flushDetails();
+    if (!likedFlag) {
+      navigate("/swdetail");
+    } else {
+      likedFlag = false;
+      flushDetails();
+    }    
   }
 
   return (
